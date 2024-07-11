@@ -1,0 +1,41 @@
+window.onload = function() {
+  //<editor-fold desc="Changeable Configuration Block">
+
+  // the following lines will be replaced by docker/configurator, when it runs in a docker-container
+  window.ui = SwaggerUIBundle({
+    {{- $extUrlLen := len .ExternalConfigURL -}}
+    {{- if gt $extUrlLen 0 -}}
+      configUrl: "{{ js .ExternalConfigURL }}"
+    {{- else -}}
+      {{ $n := len .SpecRefs }}
+      {{ if eq $n 1 }}
+        {{- range .SpecRefs -}}
+        url: "{{ js .URL }}",
+        {{- end -}}
+      {{ else }}
+        urls: [
+          {{- $first := true -}}
+          {{- range $k, $v := .SpecRefs -}}
+            {{- if $first -}}
+              {{- $first := false -}}
+            {{- else -}}
+              {{- ", " -}}
+            {{- end }}
+            {name: "{{ $v.Name }}", url: "{{ js $v.URL }}"}
+          {{- end }}
+        ],
+      {{ end }}
+      dom_id: '#swagger-ui',
+      deepLinking: {{ .DeepLinking }},
+      presets: [
+        SwaggerUIBundle.presets.apis{{ if gt $n 1 }}, SwaggerUIStandalonePreset {{- end }}
+      ],
+      plugins: [
+        SwaggerUIBundle.plugins.DownloadUrl{{ if gt $n 1 }}, SwaggerUIBundle.plugins.Topbar {{- end }}
+      ]
+      {{ if gt $n 1 }}, layout: "StandaloneLayout" {{- end }}
+    {{- end -}}
+  });
+
+  //</editor-fold>
+};
