@@ -42,7 +42,7 @@ type SwaggerSpecRef struct {
 // Config represents a (minimal) swagger UI configuration.
 type Config struct {
 	// ExternalConfigURL is the URL of an external configuration JavaScript object.
-	// If it is non empty the UI configuration will be base on this object only, all
+	// If it is non empty the UI configuration will be based on this object only, all
 	// other parameters will be ingored.
 	ExternalConfigURL string
 	// SpecRefs is a list of API specifications [SwaggerSpecRef].

@@ -43,9 +43,8 @@ func main() {
 
 Swagger UI configuration
 ------------------------
-Swagger UI is highly customizable. This package Config struct offers only minimal configuration optios.  
-For instance is accepts only a list of specification files and wether to use deep linking or not.  
+Swagger UI is highly customizable. This package Config struct offers only minimal configuration options.  
+For instance, it accepts only a list of specification files and wether to use deep linking or not.  
 If only one specification file is added, Swagger UI will be configured to use `BasicLayout`, otherwise `StandaloneLayout` will be used along with the `SwaggerUIBundle.plugins.Topbar` plugin.  
-However a complete custom configration can be specified by using the `ExternalConfigURL` field og the `Config` struct. When this field is not empty
+However, a complete custom configration can be specified by using the `ExternalConfigURL` field of the `Config` struct. When this field is not empty
 the configuration object will be fetched from this URL, ignoring all other fields.
-
