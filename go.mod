@@ -1,4 +1,4 @@
-module github.com/lochy54/iriswagui5.x
+module github.com/alchemy/iriswagui
 
 go 1.22.1
 
