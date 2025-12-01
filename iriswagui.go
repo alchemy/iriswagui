@@ -93,7 +93,7 @@ func HandleSwaggerUI(party iris.Party, relativePath string, config Config) error
 		}
 	}
 
-	swaggerParty.Get("/index.html", func(ctx iris.Context) {
+	swaggerParty.Get("/", func(ctx iris.Context) {
 		err := indexTmpl.ExecuteTemplate(ctx.ResponseWriter(), "index.html.tmpl", uiConfig)
 		if err != nil {
 			ctx.StopWithError(http.StatusInternalServerError, err)
